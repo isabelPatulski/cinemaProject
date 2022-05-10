@@ -20,19 +20,40 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
     String username;
+    String surname;
     String email;
     int birthday;
+
+    public int getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(int birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private String password;
 
     @JsonIgnore
     @OneToMany(mappedBy = "customer")
     private Set<Reservation> reservations = new HashSet <>();
 
 
-    public Customer(int id, String username, String surname, String email, int birthday) {
+    public Customer(int id, String username, String surname, String email, int birthday, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.birthday = birthday;
+        this.surname = surname;
+        this.password = password;
     }
 
     public Customer() {

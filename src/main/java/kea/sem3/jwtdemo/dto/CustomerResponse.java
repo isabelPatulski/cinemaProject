@@ -32,6 +32,12 @@ public class CustomerResponse {
 
     }
 
+    public CustomerResponse(String username, String email) {
+    }
+
+    public CustomerResponse(Customer customer, boolean b) {
+    }
+
     public static List<kea.sem3.jwtdemo.dto.CustomerResponse> getCustomersFromEntities(List<Customer> customers){
         return customers.stream().map(customer-> new kea.sem3.jwtdemo.dto.CustomerResponse(customer)).collect(Collectors.toList());
     }

@@ -1,66 +1,74 @@
 package kea.sem3.jwtdemo.api;
 
+import ch.qos.logback.core.status.Status;
+import kea.sem3.jwtdemo.dto.CustomerRequest;
+import kea.sem3.jwtdemo.dto.CustomerResponse;
 import kea.sem3.jwtdemo.entity.Customer;
+import kea.sem3.jwtdemo.repositories.CustomerRepository;
 import kea.sem3.jwtdemo.service.AuthService;
 import kea.sem3.jwtdemo.service.CustomerService;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
+import javax.validation.Valid;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("auth")
 public class AuthController {
 
+    CustomerRepository customerRepository;
     CustomerService customerService;
     AuthService authService;
 
-    @GetMapping("/")
-    public String login(HttpSession session) {
-        if (authService.notLoggedIn(session)) {
-            return "index";
+    @PostMapping("/customer/register")
+    public Customer registerUser(@Valid @RequestBody Customer newCustomer) {
+        List<Customer> getCustomers = customerRepository.findAll();
+        System.out.println("New user: " + newCustomer.toString());
+        for (Customer user : getCustomers) {
+            System.out.println("Registered user: " + newCustomer.toString());
+            if (user.equals(newCustomer)) {
+                System.out.println("User Already exists!");
+            }
         }
-        return "frontPage";
+        customerRepository.save(newCustomer);
+        return newCustomer;
     }
-
-    @PostMapping("/login")
-    public String login(WebRequest wr, HttpSession session) throws SQLException {
-        int customerId = Integer.parseInt(wr.getParameter("customer_id"));
-        String password = wr.getParameter("password");
-
-        //Evaluer om login-oplysninger matcher database
-        if (authService.login(customerId, password)) {
-            //Hvis if-statement == true
-            //Hent employee fra database
-            Customer customer = customerService.showEmployee(customerId);
-            //Sæt employee som attribut til sessionen
-            session.setAttribute("customer", customer);
-            return "redirect:/frontPage";
+    @PostMapping("/customers/login")
+    public Customer loginCustomer(@Valid @RequestBody Customer customer) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer other : customers) {
+            if (other.equals(customer)) {
+                customer.setLoggedIn(true);
+                customerRepository.save(customer);
+            }
         }
-        return "/index";
+        return customer;
     }
-
-    @GetMapping("/frontpage")
-    public String customer(HttpSession session) {
-        if (authService.notLoggedIn(session)) {
-            return "redirect:/";
-        } else {
-            return "frontPage";
+    @PostMapping("/customers/logout")
+    public Customer logOut(@Valid @RequestBody Customer customer) {
+        List<Customer> customers = customerRepository.findAll();
+        for (Customer other : customers) {
+            if (other.equals(customer)) {
+                customer.setLoggedIn(false);
+                customerRepository.save(customer);
+                return customer;
+            }
         }
+        return customer;
     }
 
-    @PostMapping("/logout")
-    public String logout(HttpSession session) {
-        //Afslutter den nuværende session
-        session.invalidate();
-        return "redirect:/";
+    @PutMapping("/{id}")
+    public CustomerResponse editCustomer(@RequestBody CustomerRequest body, @PathVariable int id){
+        return customerService.editCustomer(body,id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable int id){}
+
+
+
+}
 
 }

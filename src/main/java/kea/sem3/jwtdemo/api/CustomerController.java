@@ -46,19 +46,8 @@ public class CustomerController {
         return customerService.editCustomer(body,id);
     }
 
-    //Hvad skal der stå her? Eller hvorfor står der newprice?
-    @PatchMapping ("/{id}/{newprice}")
-    public void editUsername(@PathVariable int id,@PathVariable String newUsername) throws Exception {
-        customerService.updateUsername(id,newUsername);
-    }
 
-    @PatchMapping ("/{id}/{newprice}")
-    public void editEmail(@PathVariable int id,@PathVariable String newEmail) throws Exception {
-        customerService.updateEmail(id,newEmail);
-    }
 
-    @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable int id){}
 }
 
 

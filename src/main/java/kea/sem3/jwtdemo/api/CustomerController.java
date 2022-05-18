@@ -38,8 +38,9 @@ public class CustomerController {
         return customerService.getCustomer(id);
     }
 
-    @PostMapping
-    public CustomerResponse addCustomer(@RequestBody CustomerRequest body) { return customerService.addCustomer(body);}
+    @PostMapping()
+    public CustomerResponse addCustomer(@RequestBody CustomerRequest body){
+        return customerService.addCustomer(body);}
 
     @PutMapping("/{id}")
     public CustomerResponse editCustomer(@RequestBody CustomerRequest body, @PathVariable int id){

@@ -28,12 +28,12 @@ public class MovieService {
             Movie newMovie = movieRepository.save(new Movie(body));
             return new MovieResponse(newMovie);
         }
-        public MovieResponse editMovie(MovieRequest movieToEdit, int movieId){
+        /*public MovieResponse editMovie(MovieRequest movieToEdit, int movieId){
             Movie car = movieRepository.findById(movieId).orElseThrow(()-> new Client4xxException("No car with provided ID found"));
             car.setTitle(movieToEdit.getTitle());
             car.setCategory(movieToEdit.getCategory());
             return new MovieResponse(movieRepository.save(car));
-        }
+        }*/
 
         //PATCH method for Title
         public void updateTitle(int movieId, String newTitle){
@@ -41,7 +41,7 @@ public class MovieService {
             movie.setTitle(newTitle);
             movieRepository.save(movie);
         }
-
+    /*
         //PATCH for Category
         public void updateGenre(int movieId,String newGenre){
             Movie movie = movieRepository.findById(movieId).orElseThrow(()-> new Client4xxException("No car with provided ID found"));
@@ -51,5 +51,5 @@ public class MovieService {
 
         public void deleteMovie(int movieId) {
             movieRepository.deleteById(movieId);
-        }
+        }*/
     }

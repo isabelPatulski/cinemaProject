@@ -33,7 +33,7 @@ public class MovieController {
             return movieService.addMovie(body);
         }
 
-        @PutMapping("/{id}")
+        /*@PutMapping("/{id}")
         public MovieResponse editMovie(@RequestBody MovieRequest body, @PathVariable int id){
             return movieService.editMovie(body,id);
         }
@@ -48,6 +48,6 @@ public class MovieController {
         }
 
         @DeleteMapping("/{id}")
-        public void deleteMovie(@PathVariable int id){}
+        public void deleteMovie(@PathVariable int id){}*/
 
     }

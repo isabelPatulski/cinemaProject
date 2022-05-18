@@ -28,10 +28,14 @@ public class CustomerController {
     }
 
     @GetMapping
-    List<Customer> getCustomers() {return customerRepository.findAll();}
+    List<Customer> getCustomers() {
+        return customerRepository.findAll();
+    }
 
     @PostMapping
-    Customer createCustomer (@RequestBody Customer customer) {return customerRepository.save(customer);}
+    Customer createCustomer(@RequestBody Customer customer) {
+        return customerRepository.save(customer);
+    }
 
     @GetMapping("/{id}")
     public CustomerResponse getCustomer(@PathVariable int id) throws Exception {
@@ -39,14 +43,14 @@ public class CustomerController {
     }
 
     @PostMapping()
-    public CustomerResponse addCustomer(@RequestBody CustomerRequest body){
-        return customerService.addCustomer(body);}
-
-    @PutMapping("/{id}")
-    public CustomerResponse editCustomer(@RequestBody CustomerRequest body, @PathVariable int id){
-        return customerService.editCustomer(body,id);
+    public CustomerResponse addCustomer(@RequestBody CustomerRequest body) {
+        return customerService.addCustomer(body);
     }
 
+    @PutMapping("/{id}")
+    public CustomerResponse editCustomer(@RequestBody CustomerRequest body, @PathVariable int id) {
+        return customerService.editCustomer(body, id);
+    }
 
 
 }

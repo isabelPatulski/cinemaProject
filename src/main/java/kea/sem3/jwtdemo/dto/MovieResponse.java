@@ -17,9 +17,14 @@ import java.util.stream.Collectors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MovieResponse {
     int id;
-
     String title;
     String genre;
+    String description;
+    int price;
+    int ageLimit;
+    String rating;
+
+
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
@@ -27,9 +32,13 @@ public class MovieResponse {
     LocalDateTime updated;
 
     public MovieResponse(Movie movie) {
+        this.id = movie.getId();
         this.title = movie.getTitle();
         this.genre = movie.getGenre();
-
+        this.description = movie.getDescription();
+        this.price = movie.getPrice();
+        this.ageLimit = movie.getAgeLimit();
+        this.rating = movie.getRating();
     }
 
     public static List<MovieResponse> getMoviesFromEntities(List<Movie> movie){

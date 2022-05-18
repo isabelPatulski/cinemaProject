@@ -38,11 +38,11 @@ public class MovieController {
             return movieService.editMovie(body,id);
         }
 
-        @PatchMapping ("/{id}/{newprice}")
+        @PatchMapping ("/{id}/{newTitle}")
         public void editTitle(@PathVariable int id,@PathVariable String newTitle) throws Exception {
             movieService.updateTitle(id,newTitle);
         }
-        @PatchMapping ("/{id}/{newprice}")
+        @PatchMapping ("/{id}/{newGenre}")
         public void editGenre(@PathVariable int id,@PathVariable String newGenre) throws Exception {
             movieService.updateGenre(id,newGenre);
         }

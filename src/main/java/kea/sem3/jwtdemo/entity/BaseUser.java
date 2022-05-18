@@ -1,6 +1,6 @@
+
 package kea.sem3.jwtdemo.entity;
 
-import kea.sem3.jwtdemo.security.UserWithPassword;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +20,7 @@ import java.util.List;
 @DiscriminatorValue("USER")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "user")
-public class BaseUser implements UserWithPassword {
+public class BaseUser{
 
    @Id
    private String username;
@@ -48,22 +48,22 @@ public class BaseUser implements UserWithPassword {
    public BaseUser(String username, String email, String password) {
       this.username = username;
       this.email = email;
-      this.password = pwEncoder.encode(password);
+      this.password = password;
       this.enabled = true;
    }
 
-   @Override
    public void setPassword(String password) {
-      this.password = pwEncoder.encode(password);
+      this.password = password;
    }
 
-   @Override
    public List<Role> getRoles() {
       return roles;
    }
-   @Override
+
    public void addRole(Role role){
       roles.add(role);
    }
 
 }
+
+

@@ -20,13 +20,13 @@ public class CinemaHall {
     int id;
     int hallNumber;
     int seat;
-    int row;
+    int seatRow;
 
     public CinemaHall(int id, int hallNumber, int seat, int row) {
         this.id = id;
         this.hallNumber = hallNumber;
         this.seat = seat;
-        this.row = row;
+        this.seatRow = row;
     }
 
     public CinemaHall() {

@@ -53,10 +53,10 @@ public class AuthController {
 
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable int id){}
+*/
 
 
 
-}
 
 
 

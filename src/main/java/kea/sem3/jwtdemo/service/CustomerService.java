@@ -24,7 +24,7 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public Customer registerUser(Customer newCustomer) {
+    /*public Customer registerUser(Customer newCustomer) {
         List<Customer> getAll = customerRepository.findAll();
         System.out.println("New user: " + newCustomer.toString());
         for (Customer customer : getCustomers) {
@@ -35,7 +35,7 @@ public class CustomerService {
             }
         }
         customerRepository.save(newCustomer);
-        return newCustomer;
+        return newCustomer;*/
 
     public List<CustomerResponse> getCustomers() {
         List<Customer> customers = customerRepository.findAll();

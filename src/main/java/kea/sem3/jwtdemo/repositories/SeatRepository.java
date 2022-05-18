@@ -1,12 +1,11 @@
 package kea.sem3.jwtdemo.repositories;
 
 import kea.sem3.jwtdemo.entity.Reservation;
+import kea.sem3.jwtdemo.entity.Seat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-
 @Repository
-public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
-
+public interface SeatRepository extends JpaRepository<Seat, Integer> {
 }
+

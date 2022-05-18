@@ -27,6 +27,37 @@ public class Movie{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
 
+    @Column(length = 60)
+    String title;
+
+    @Column(length = 60)
+    String genre;
+
+    int price;
+
+    int ageLimit;
+
+    @Column(length = 10)
+    String rating;
+
+    @Column(length = 500)
+    String description;
+
+
+    @CreationTimestamp
+    LocalDateTime created;
+
+    @UpdateTimestamp
+    LocalDateTime edited;
+
+    @OneToMany(mappedBy = "movie", fetch = FetchType.EAGER)
+   private Set<Showing> showings = new HashSet<>();
+
+    public void addShowing(Showing sh){
+        showings.add(sh);
+        sh.setMovie(this);
+    }
+
     public Movie() {}
 
 

@@ -10,7 +10,9 @@ import kea.sem3.jwtdemo.error.Client4xxException;
 import kea.sem3.jwtdemo.repositories.CustomerRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,12 +24,25 @@ public class CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    public Customer registerUser(Customer newCustomer) {
+        List<Customer> getAll = customerRepository.findAll();
+        System.out.println("New user: " + newCustomer.toString());
+        for (Customer customer : getCustomers) {
+        }
+            System.out.println("Registered user: " + newCustomer.toString());
+            if (customer.equals(newCustomer)) {
+                System.out.println("User Already exists!");
+            }
+        }
+        customerRepository.save(newCustomer);
+        return newCustomer;
+
     public List<CustomerResponse> getCustomers() {
         List<Customer> customers = customerRepository.findAll();
         return customers.stream().map(customer -> new CustomerResponse(customer,false)).collect(Collectors.toList());
     }
 
-    public CustomerResponse addCustomer(CustomerRequest body){
+    public CustomerResponse addCustomer (CustomerRequest body){
         Customer newCustomer = customerRepository.save(new Customer(body));
         return new CustomerResponse(newCustomer);
     }

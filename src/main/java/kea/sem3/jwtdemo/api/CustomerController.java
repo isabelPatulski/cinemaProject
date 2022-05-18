@@ -12,11 +12,12 @@ import kea.sem3.jwtdemo.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/customer")
 public class CustomerController {
 
     CustomerService customerService;
@@ -26,6 +27,20 @@ public class CustomerController {
     public CustomerController(CustomerService customerService) {
         this.customerService = customerService;
     }
+
+    @PostMapping("/register")
+    /*public Customer registerUser(@Valid @RequestBody Customer newCustomer) {
+        List<Customer> getCustomers = customerRepository.findAll();
+        System.out.println("New user: " + newCustomer.toString());
+        for (Customer customer : getCustomers) {
+            System.out.println("Registered user: " + newCustomer.toString());
+            if (customer.equals(newCustomer)) {
+                System.out.println("User Already exists!");
+            }
+        }
+        customerRepository.save(newCustomer);
+        return newCustomer;
+    }*/
 
     @GetMapping
     List<Customer> getCustomers() {

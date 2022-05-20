@@ -17,14 +17,19 @@ import java.util.stream.Collectors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CustomerResponse {
     int id;
-
-    String username;
     String email;
+    String username;
+
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss",shape = JsonFormat.Shape.STRING)
     LocalDateTime created;
 
-    @JsonFormat(pattern = "dd-MM-yyyy hh:mm:ss",shape = JsonFormat.Shape.STRING)
-    LocalDateTime updated;
+    int
+
+
+    private String email;
+    private String username;
+    private int birthday;
+    private int reservationId;
 
     public CustomerResponse(Customer customer) {
         this.username = customer.getUsername();

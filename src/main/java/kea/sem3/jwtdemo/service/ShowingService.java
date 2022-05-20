@@ -47,7 +47,10 @@ public class ShowingService {
     ShowingResponse showingResponse = new ShowingResponse(showing);
 
     return showingResponse;
+    }
 
+    public void deleteShowing(int showingId) {
+        showingRepository.deleteById(showingId);
     }
 
 }

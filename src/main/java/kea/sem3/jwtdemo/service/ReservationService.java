@@ -38,11 +38,15 @@ public class ReservationService {
 
     public ReservationResponse create(ReservationRequest reservationRequest) {
         Showing showing = showingRepository.findById(reservationRequest.getShowingId()).orElseThrow();
-        Customer customer = customerRepository.findById(reservationRequest.getCustomerId()).orElseThrow();
+        Customer customerId = customerRepository.findById(reservationRequest.getCustomerId()).orElseThrow();
         //  public Reservation(int numbOfSeats, Showing showing, Customer customer)
-        Reservation reservation = new Reservation(reservationRequest.getNumbOfSeats(),showing, customer);
+        Reservation reservation = new Reservation(reservationRequest.getNumbOfSeats(),showing, customerId);
         ReservationResponse reservationResponse = new ReservationResponse(reservation);
 
         return reservationResponse;
+    }
+
+    public void deleteReservation(int reservationId) {
+        reservationRepository.deleteById(reservationId);
     }
 }

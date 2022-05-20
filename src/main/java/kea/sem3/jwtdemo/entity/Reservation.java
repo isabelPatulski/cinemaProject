@@ -26,6 +26,9 @@ public class Reservation {
     private int numbOfSeats;
 
 
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Customer customer;
+
     /*der kan være mange reservationer til en fremvisning
     /*name er navngivning af den kollen der skal oprettes
     referencedColumnName er fra hvilken kolonne inforationen skal hentes fra
@@ -34,8 +37,10 @@ public class Reservation {
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Showing showing;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Customer customer;
+
+
+    @ManyToOne(cascade= CascadeType.ALL, fetch = FetchType.EAGER )
+    private Movie movie;
 
     public Reservation(int numbOfSeats, Showing showing, Customer customer) {
         this.numbOfSeats = numbOfSeats;

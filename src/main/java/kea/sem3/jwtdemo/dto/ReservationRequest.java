@@ -15,7 +15,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class ReservationRequest {
 
-    //private  int costumerId;
     private int customerId;
 
     private int showingId;

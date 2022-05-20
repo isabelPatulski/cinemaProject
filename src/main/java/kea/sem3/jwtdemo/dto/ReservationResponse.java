@@ -16,12 +16,13 @@ import java.util.stream.Collectors;
 
 public class ReservationResponse {
 
-
+    private String customerMail;
     private String movieTtitle;
     private int cinemaHallId;
     private int numbSeats;
 
     public ReservationResponse(Reservation res){
+        this.customerMail= res.getCustomer().getEmail();
         this.movieTtitle = res.getShowing().getMovie().getTitle();
         this.cinemaHallId = res.getShowing().getCinemaHall().getId();
         this.numbSeats= res.getNumbOfSeats();

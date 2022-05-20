@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,15 +23,18 @@ public class Customer {
     @Column(length = 100)
     String username;
     String email;
-    int birthday;
+    Date birthday;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<Reservation> reservations = new HashSet <>();
+    public void addReservation(Reservation res){
+        reservations.add(res);
+        res.setCustomer(this);
+    }
 
 
-    public Customer(int id, String username, String surname, String email, int birthday) {
-        this.id = id;
+    public Customer(String username, String surname, String email, Date birthday) {
         this.username = username;
         this.email = email;
         this.birthday = birthday;

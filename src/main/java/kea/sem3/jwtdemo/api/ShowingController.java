@@ -33,4 +33,7 @@ public class ShowingController {
     public ShowingResponse createShowing(@RequestBody ShowingRequest showingRequest){
         return showingService.createShowing(showingRequest);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteShowing(@PathVariable int id){}
 }

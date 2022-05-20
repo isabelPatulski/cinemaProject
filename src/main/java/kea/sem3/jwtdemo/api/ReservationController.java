@@ -42,6 +42,9 @@ public class ReservationController {
         return reservationService.create(reservationRequest);}
 
 
+    @DeleteMapping("/{id}")
+    public void deleteReservation(@PathVariable int id){}
+
    /* @PutMapping("/{reservationId}/customer/{customerId}")
     Reservation customerReservations (
             @PathVariable int reservationId,

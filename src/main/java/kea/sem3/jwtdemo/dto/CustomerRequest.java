@@ -11,10 +11,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerRequest {
-    private int id;
     private String email;
     private String username;
-    //Er birthday en string? eller local date
+    private int birthday;
+    private int reservationId;
 
 }
 

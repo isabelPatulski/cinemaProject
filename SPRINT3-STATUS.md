@@ -51,14 +51,17 @@ A section "Who did what" with a section for each member in the group, written by
   
     
     Udført:
-    Droppet klassen Seats og showSeats pga for kompliceret at lave taget deadline i betragtning, nu er der x-antal seats pr. reservation
-    Alle klassernes data kan vises på browser
-    fået gennemgået test sammen med Casper
+     - forsimplet koden ved at droppe klassen Seats og showSeats pga for kompliceret at lave taget deadline i betragtning, 
+     nu er der et bestemt antal sæder i cinemaHall 
+     - Alle klassernes data kan vises på browser
+    - fået gennemgået test sammen med Casper
+    - cinemaHall indeholder kun et id og et antal sæder
+   
     
     Hvad jeg ikke nåede:
-    at gøre det muligt at reseverer et sæde
-    at kunne slette og redigerer
-    at være på frontend-delen
+    - at gøre det muligt at reseverer et sæde
+    - at kunne redigerer
+    - at være på frontend-delen
     
     
     

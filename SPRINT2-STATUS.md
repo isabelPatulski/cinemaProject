@@ -6,27 +6,36 @@ A short list, explaining how far you came in this sprint
 
 A section "Who did what" with a section for each member in the group, written by each member, explaining what you specifically did in this sprint.
     Casper:
-        - Created base frontend project deployed with custom domain.
-        - Setup "Movie" class with full CRUD, missing tests as of now.
-        - Create a Jira project for the team to help coordinate and track each other's work.
+       
 
     Isabel:
     
 
     
-    Andrea:    
-    plan: 
-    - lavet et ER-diagram
-    - få virtual machine op at køre
-    - lave skelet til showing, reservation og Seats
+    Andrea:  
+    
+    Planlagt: 
+    - Få styr på relationerne mellem alle klasserne(undtaget customer)
+    - Få de andre klasser til ar ryge over på DB
+    - hvordan relations-data håndteres i dto
+    - få ordnet servicelag for alle klassern
+    - få styr på test
     
     Udført:
-    - Fået styr på ER-diagram dvs. slettet popularity, date, genre & ParentelRating. 
-    - ændret relationerne mellem klasserne og ommoduleret attributter
-    - Sørget for at testData for showing og seats ryger over i DB og at korrekte relationer også medfølger
+    - fået alle relationerne mellem alle klasserne(undtaget customer) korrekt implementeret
+    - fået testdata fra de forskellige klasser (undtaget customer) registreret i DB
+    - Reservation driller stadig
     
-    og tilføjet showSeats
-    gået igang med relaationer mellem alle klasserne (undtaget )
+    Casper:
+   
+    Planlagt:
+    - Kigget på Seats og CinemaHall i Backenden
+    - Startet opbygning af Frontend og skabe tilslutning med MovieDatabase API samt backenden
+    - Lav flow af frontend
+    
+    Udført:
+    - Frontend skelet færdig, samt mange funktioner tilført
+    - Adgang til Movie DataBase API oprettet samt den layout på siden
         
 
 A list of sprint tasks you expect to complete in Sprint-2
